@@ -1,5 +1,16 @@
-<h1>Bienvenido a Chelp!</h1>
-<h3>Te recomendamos los mejores negocios cercanos a ti!</h3>
-<div>
-  <p>Para iniciar y obtener recomendaciones por favor inicia sesión</p>
+<div class="jumbotron">
+  <h1 class="display-4">Bienvenido a Chelp!</h1>
+  <p class="lead">La página web para obtener recomendaciones de negocios</p>
+  <hr class="my-4">
+  <p>Inicia sesión con tu identificador de usuario para poder recomendarte negocios.</p>
+  <p class="lead">
+    <%= form_with url: '/recommendations/login' do |form| %>
+      <div class="input-group mb-3">
+        <%= form.text_field :user_id, class: 'form-control', placeholder: 'ID de usuario' %>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">Ingresar</button>
+        </div>
+      </div>
+    <% end %>
+  </p>
 </div>

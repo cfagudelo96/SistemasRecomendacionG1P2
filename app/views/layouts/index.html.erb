@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">SR Grupo 1 - Modelo Híbrido de Recomendaciones </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+            <!-- if(session.get("id") != null) %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/history">Información del Usuario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            else %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            end %>-->
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <br/>
+    <!-- if(flash.containsKey("success")) %>
+        <div class="alert alert-primary" role="alert">
+            @flash.get("success")
+        </div>
+    end %>
+    if(flash.containsKey("error")) %>
+        <div class="alert alert-danger" role="alert">
+            @flash.get("error")
+        </div>
+    <end %>-->
+
+  <h1>Buscar una nueva recomendación</h1>
+  <br>
+  <form action="/recommender/recommend" method="get">
+    <div class="row">
+      <div class="col-md-3">
+        <label>
+          Usuario:
+        </label>
+        <br>
+        <input type="text" name="usuario"  class="form-control" required>
+      </div>
+      <div class="col-md-3">
+        <label>
+          Ciudad:
+        </label>
+        <br>
+        <select name="ciudad">
+          <option value="Coseno">Cualquiera</option>
+          <option value="Tanimoto">Tanimoto</option>
+          <option value="Pearson">Pearson</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label>
+          Horario Deseado:
+        </label>
+        <br>
+        Inicio: <input type="time" name="inicio" class="form-control" required>
+        Fin: <input type="time" name="fin" class="form-control" required>
+      </div>
+      <div class="col-md-3">
+        <label>
+          Categoría del Negocio:
+        </label>
+        <br>
+        <select name="categoria">
+          <option value="Coseno">Ninguna</option>
+          <option value="Tanimoto">Tanimoto</option>
+          <option value="Pearson">Pearson</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <label>
+          Peso Modelo Colaborativo:
+        </label>
+        <br>
+        <input type="text" name="" class="form-control" required>
+      </div>
+      <div class="col-md-4">
+        <label>
+          Peso Modelo de Texto:
+        </label>
+        <br>
+        <input type="text" name="" class="form-control" required>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary">Pedir Recomendación</button>
+      </div>
+    </div>
+  </form>
+</div>

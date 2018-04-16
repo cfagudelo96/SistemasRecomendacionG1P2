@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  neighborhood: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  latitude: 1.5
+  longitude: 1.5
+  stars: 1.5
+  review_count: 1
+  is_open: false
+
+two:
+  name: MyString
+  neighborhood: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  postal_code: MyString
+  latitude: 1.5
+  longitude: 1.5
+  stars: 1.5
+  review_count: 1
+  is_open: false

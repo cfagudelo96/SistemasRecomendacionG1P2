@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  get '/load_data', to: 'home#load_data'
+  root to: 'home#index'
+  get '/recommendations', to: 'recommendations#index'
+  post '/recommendations/login', to: 'recommendations#login'
+  get '/recommendations/logout', to: 'recommendations#logout'
 end

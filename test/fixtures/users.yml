@@ -1,0 +1,43 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  review_count: 1
+  yelping_since: 2018-04-14 18:22:51
+  useful: 1
+  funny: 1
+  cool: 1
+  fans: 1
+  average_stars: 1.5
+  compliment_hot: 1
+  compliment_more: 1
+  compliment_profile: 1
+  compliment_cute: 1
+  compliment_list: 1
+  compliment_note: 1
+  compliment_plain: 1
+  compliment_cool: 1
+  compliment_funny: 1
+  compliment_writer: 1
+  compliment_photos: 1
+
+two:
+  name: MyString
+  review_count: 1
+  yelping_since: 2018-04-14 18:22:51
+  useful: 1
+  funny: 1
+  cool: 1
+  fans: 1
+  average_stars: 1.5
+  compliment_hot: 1
+  compliment_more: 1
+  compliment_profile: 1
+  compliment_cute: 1
+  compliment_list: 1
+  compliment_note: 1
+  compliment_plain: 1
+  compliment_cool: 1
+  compliment_funny: 1
+  compliment_writer: 1
+  compliment_photos: 1

@@ -1,0 +1,41 @@
+<h1>Bienvenido <%= @current_user %></h1>
+<h4>Buscar una nueva recomendación</h4>
+<form action="/recommender/recommend" method="get">
+  <div class="row">
+    <div class="col-md-3">
+      <label>
+        Ciudad:
+      </label>
+      <br>
+      <select name="ciudad">
+        <option value="Coseno">Cualquiera</option>
+        <option value="Tanimoto">Tanimoto</option>
+        <option value="Pearson">Pearson</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label>
+        Horario Deseado:
+      </label>
+      <label>Inicio: <input type="time" name="inicio" class="form-control" required></label>
+      <label>Fin: <input type="time" name="fin" class="form-control" required></label>
+    </div>
+    <div class="col-md-3">
+      <label>
+        Categoría del Negocio:
+      </label>
+      <br>
+      <select name="categoria">
+        <option value="Coseno">Ninguna</option>
+        <option value="Tanimoto">Tanimoto</option>
+        <option value="Pearson">Pearson</option>
+      </select>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3">
+      <button type="submit" class="btn btn-primary">Pedir Recomendación</button>
+    </div>
+  </div>
+</form>
