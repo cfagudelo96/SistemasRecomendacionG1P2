@@ -2,6 +2,7 @@ class RecommendationsController < ApplicationController
   before_action :check_current_user, only: %i[index logout]
 
   def index
+    @recommendations = @current_user.recommendations
   end
 
   def load_recommendations

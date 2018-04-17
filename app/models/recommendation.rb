@@ -4,6 +4,8 @@ class Recommendation < ApplicationRecord
   belongs_to :user
   belongs_to :business
 
+  scope :by_hours
+
   enum recommendation_type: %i[collaborative text]
 
   def self.load_recommendations
