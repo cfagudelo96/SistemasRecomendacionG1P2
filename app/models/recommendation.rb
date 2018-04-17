@@ -1,3 +1,5 @@
+require 'csv'
+
 class Recommendation < ApplicationRecord
   belongs_to :user
   belongs_to :business
@@ -9,9 +11,9 @@ class Recommendation < ApplicationRecord
       file.each_line do |line|
         split = line.split(';')
         if split.size == 3
-          user_id = split[0]
+          user_id = split[0][1..-2]
           user = User.find_by_id(user_id)
-          business_id = split[1]
+          business_id = split[1][1..-2]
           business = Business.find_by_id(business_id)
           recommendation = split[2].to_f
           puts "No encontrado en linea: #{line}" if user.blank? || business.blank?
