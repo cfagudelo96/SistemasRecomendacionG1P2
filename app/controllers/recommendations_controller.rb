@@ -5,11 +5,6 @@ class RecommendationsController < ApplicationController
     @recommendations = @current_user.recommendations
   end
 
-  def load_recommendations
-    LoadRecommendationsJob.perform_later
-    render json: {info: 'Recommendations loaded'}
-  end
-
   def login
     user = User.find(params[:user_id])
     session[:current_user_id] = user.id
