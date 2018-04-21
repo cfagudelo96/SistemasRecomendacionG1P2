@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_17_170153) do
+ActiveRecord::Schema.define(version: 2018_04_20_042551) do
 
   create_table "attribute", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "business_id", limit: 22, null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_04_17_170153) do
     t.boolean "is_open"
   end
 
-  create_table "category", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "business_id", limit: 22, null: false
     t.string "category"
   end
