@@ -10,7 +10,7 @@ class User < ApplicationRecord
         collaborative_recommendations.order(value: :desc).limit(24).each do |cr|
           tr = TextRecommendation.find_by_user_id_and_business_id(id, cr.business_id)
           if tr
-            result << Recommendation.new(cr.business, cr.value * 0.7 + tr.value * 0.3, 'Híbrido (0.7 Colaborativo y 0.3 Texto)')
+            result << Recommendation.new(cr.business, cr.value * 0.9 + tr.value * 0.1, 'Híbrido (0.7 Colaborativo y 0.3 Texto)')
           else
             result << Recommendation.new(cr.business, cr.value, 'Colaborativo')
           end
@@ -31,7 +31,7 @@ class User < ApplicationRecord
         collaborative_recommendations.joins(business: :categories).where(categories: {category: Category.to_category(category)}).order(value: :desc).limit(24).each do |cr|
           tr = TextRecommendation.find_by_user_id_and_business_id(id, cr.business_id)
           if tr
-            result << Recommendation.new(cr.business, cr.value * 0.7 + tr.value * 0.3, 'Híbrido (0.7 Colaborativo y 0.3 Texto)')
+            result << Recommendation.new(cr.business, cr.value * 0.9 + tr.value * 0.1, 'Híbrido (0.7 Colaborativo y 0.3 Texto)')
           else
             result << Recommendation.new(cr.business, cr.value, 'Colaborativo')
           end
