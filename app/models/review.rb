@@ -1,6 +1,10 @@
+require 'csv'
+
 class Review < ApplicationRecord
   belongs_to :business
   belongs_to :user
+
+  Review.joins(business: :category).where('categories.category = "Bars"')
 
   def self.update_user_info
     user_info_hash = {}
@@ -15,6 +19,22 @@ class Review < ApplicationRecord
     user_info_hash.each do |uid, hash|
       hash[:average_stars] = hash[:average_stars].to_f / hash[:review_count].to_f
       User.find(uid).update(hash)
+    end
+  end
+
+  def self.export_bars_recommendations
+    CSV.open('./data/bars_stars.csv', 'w') do |writer|
+      joins(business: :categories).where('categories.category = "Bars"').each do |review|
+        writer << [review.user_id, review.business_id, review.stars]
+      end
+    end
+  end
+
+  def self.export_nightlife_recommendations
+    CSV.open('./data/nightlife_stars.csv', 'w') do |writer|
+      joins(business: :categories).where('categories.category = "Nightlife"').each do |review|
+        writer << [review.user_id, review.business_id, review.stars]
+      end
     end
   end
 end

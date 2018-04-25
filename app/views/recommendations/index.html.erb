@@ -1,58 +1,46 @@
 <h1>Bienvenido <%= @current_user %></h1>
 <h4>Buscar una nueva recomendación</h4>
-<form action="/recommender/recommend" method="get">
-  <div class="row">
-    <div class="col-md-3">
-      <label>
-        Ciudad:
-      </label>
-      <br>
-      <select name="ciudad">
-        <option value="Coseno">Cualquiera</option>
-        <option value="Tanimoto">Tanimoto</option>
-        <option value="Pearson">Pearson</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <label>
-        Horario Deseado:
-      </label>
-      <label>Inicio: <input type="time" name="inicio" class="form-control" required></label>
-      <label>Fin: <input type="time" name="fin" class="form-control" required></label>
-    </div>
-    <div class="col-md-3">
-      <label>
-        Categoría del Negocio:
-      </label>
-      <br>
-      <select name="categoria">
-        <option value="Coseno">Ninguna</option>
-        <option value="Tanimoto">Tanimoto</option>
-        <option value="Pearson">Pearson</option>
-      </select>
-    </div>
+<form action="/recommendations" method="get">
+  <div class="form-group">
+    <label for="category">Selecciona una categoría de negocio: </label>
+    <select name="category" class="form-control" id="category">
+      <option value="3" <%= 'selected' if @selected == '3' %>>Cualquiera</option>
+      <option value="0" <%= 'selected' if @selected == '0' %>>Restaurantes</option>
+      <option value="1" <%= 'selected' if @selected == '1' %>>Bares</option>
+      <option value="2" <%= 'selected' if @selected == '2' %>>Vida nocturna</option>
+    </select>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-md-3">
-      <button type="submit" class="btn btn-primary">Pedir Recomendación</button>
-    </div>
-  </div>
+  <button type="submit" class="btn btn-primary">Pedir Recomendación</button>
 </form>
 <br/>
-<% if @recommendations.empty? %>
-  <h3>Ups!</h3>
-  <h4>No encontramos recomendaciones para darte</h4>
-<% else %>
-  <h3>Recomendaciones</h3>
-  <div>
-    <ul class="list-group">
+<% if @recommendations %>
+  <% if @recommendations.empty? %>
+    <h3>Ups!</h3>
+    <h4>No encontramos recomendaciones para darte</h4>
+  <% else %>
+    <h3>Recomendaciones</h3>
+    <div class="row">
       <% @recommendations.each do |recommendation| %>
-        <li class="list-group-item">
-          <%= recommendation.business.name %>
-          <span class="float-right"><strong>Colaborativo: </strong><%= recommendation.recommendation %></span>
-        </li>
+        <% business = recommendation.business %>
+        <div class="col-md-4 col-xs-12">
+          <div class="card" style="margin-bottom: 20px">
+            <iframe
+              class=card-img-top"
+              src=<%= "https://www.google.com/maps/embed/v1/place?key=AIzaSyDpqpJKSu2qBCEvjVj9Hm2q3d_CAy3uQzc&q=#{business.latitude},#{business.longitude}" %>
+            ></iframe>
+            <div class="card-body">
+              <h5 class="card-title"><%= business %> <span class="float-right"><%= recommendation.type %>: <%= recommendation.value.round(2) %></span></h5>
+              <p class="card-text">
+                <strong>Dirección: </strong><%= business.address %>
+                <br/>
+                <strong>Estrellas: </strong><%= business.stars %>
+                <br/>
+                <strong>Número de reviews: </strong><%= business.review_count %>
+              </p>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </ul>
-  </div>
+    </div>
+  <% end %>
 <% end %>

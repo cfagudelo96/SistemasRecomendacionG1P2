@@ -2,7 +2,10 @@ class RecommendationsController < ApplicationController
   before_action :check_current_user, only: %i[index logout]
 
   def index
-    @recommendations = @current_user.recommendations
+    if params[:category]
+      @recommendations = @current_user.recommendations(params[:category])
+      @selected = params[:category]
+    end
   end
 
   def login
